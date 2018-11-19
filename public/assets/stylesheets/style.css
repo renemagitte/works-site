@@ -1,0 +1,119 @@
+.typography-logo, .logo {
+  font-family: "Istok Web", sans-serif;
+  font-size: 0.6em;
+  letter-spacing: 0.2em;
+  font-weight: 300; }
+
+.typography-regular, .nav-listItem, .case p {
+  font-family: "Istok Web", sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+  line-height: 2em; }
+
+.typography-bold, .nav-listItem-heading {
+  font-family: "Istok Web", sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 0.1em;
+  font-weight: 700; }
+
+.logo {
+  width: 360px;
+  height: 20px;
+  position: fixed;
+  top: 50px;
+  left: 40px;
+  text-transform: uppercase; }
+
+.typography-logo, .logo {
+  font-family: "Istok Web", sans-serif;
+  font-size: 0.6em;
+  letter-spacing: 0.2em;
+  font-weight: 300; }
+
+.typography-regular, .nav-listItem, .case p {
+  font-family: "Istok Web", sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+  line-height: 2em; }
+
+.typography-bold, .nav-listItem-heading {
+  font-family: "Istok Web", sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 0.1em;
+  font-weight: 700; }
+
+.nav {
+  position: fixed;
+  top: 50vh;
+  left: 40px;
+  width: 25%;
+  height: 100vh;
+  display: inline-block; }
+  .nav-list {
+    list-style: none;
+    padding-left: 0; }
+  .nav-listItem-heading {
+    text-transform: uppercase; }
+  .nav-listItem {
+    cursor: pointer;
+    text-transform: uppercase; }
+  .nav-arrowdown {
+    height: 1em;
+    display: inline-block; }
+
+.typography-logo, .logo {
+  font-family: "Istok Web", sans-serif;
+  font-size: 0.6em;
+  letter-spacing: 0.2em;
+  font-weight: 300; }
+
+.typography-regular, .nav-listItem, .case p {
+  font-family: "Istok Web", sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+  line-height: 2em; }
+
+.typography-bold, .nav-listItem-heading {
+  font-family: "Istok Web", sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 0.1em;
+  font-weight: 700; }
+
+.case {
+  display: inline-block;
+  max-width: 60%;
+  height: 100%;
+  vertical-align: top;
+  margin-top: 100px;
+  margin-left: 25%; }
+  .case-image {
+    padding: 10px 0;
+    width: 800px; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  overflow: auto; }
+
+body {
+  font-size: 100%;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 50px; }
+
+a {
+  color: black; }
+
+@media all and (min-width: 768px) {
+  body {
+    font-size: 130%; } }
+@media all and (min-width: 1440px) {
+  body {
+    font-size: 120%; } }
+
+/*# sourceMappingURL=style.css.map */

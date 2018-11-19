@@ -1,0 +1,42 @@
+
+$breakpoint-smallDesktop: 1440px
+$breakpoint-tablet: 1024px
+$breakpoint-mobile: 768px
+
+@import 'partials/logo'
+@import 'partials/nav'
+@import 'partials/case'
+
+
+html, body
+  margin: 0
+  padding: 0
+  position: relative
+  width: 100%
+  overflow: auto  
+
+body
+  font-size: 100%
+  width: 100%
+  height: 100%
+  margin-bottom: 50px
+
+a
+  color: black
+
+
+
+
+@media all and (min-width: $breakpoint-mobile)
+
+  body
+    font-size: 130%
+
+  
+
+@media all and (min-width: $breakpoint-smallDesktop)
+
+  body
+    font-size: 120%
+
+  

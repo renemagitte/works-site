@@ -1,0 +1,24 @@
+@import '../global/typography'
+
+.nav
+  position: fixed
+  top: 50vh
+  left: 40px
+  width: 25%
+  height: 100vh
+  // padding-top: 50vh
+  // padding-left: 40px
+  display: inline-block
+  &-list
+    list-style: none
+    padding-left: 0
+  &-listItem-heading
+    @extend .typography-bold
+    text-transform: uppercase
+  &-listItem
+    cursor: pointer
+    text-transform: uppercase
+    @extend .typography-regular
+  &-arrowdown
+    height: 1em
+    display: inline-block
