@@ -31,11 +31,8 @@ module.exports = function(grunt) {
         },
         build: {
           src: [
-              'public/assets/js/IntroLogo.js',
-              'public/assets/js/Flag.js',
-              'public/assets/js/Speech.js',
-              'public/assets/TopAnimation.js',
-              'public/assets/js/BeerGlass.js',
+              'public/assets/js/works.js',
+              'public/assets/js/setdesign.js',
               'public/assets/js/main.js'
           ],
           dest: 'public/assets/js/minified.js'

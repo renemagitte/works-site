@@ -3,6 +3,8 @@
 works.js
 setdesign.js
 
-/images
+images
+
+node_modules
 
 *.jpg
