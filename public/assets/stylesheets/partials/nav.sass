@@ -1,4 +1,5 @@
 @import '../global/typography'
+@import '../global/variables'
 
 .nav
   position: fixed
@@ -22,3 +23,14 @@
   &-arrowdown
     height: 1em
     display: inline-block
+
+@media all and (max-width: $breakpoint-mobile)
+
+  .nav
+    display: none
+  
+
+// @media all and (min-width: $breakpoint-smallDesktop)
+
+//   body
+//     font-size: 120%
