@@ -11,7 +11,7 @@
   font-weight: 300;
   line-height: 2em; }
 
-.typography-bold, .nav-listItem-heading {
+.typography-bold, .mobilemenu-button, .nav-listItem-heading {
   font-family: "Istok Web", sans-serif;
   font-size: 0.7em;
   letter-spacing: 0.1em;
@@ -25,10 +25,24 @@
   left: 40px;
   text-transform: uppercase; }
 
+.sun {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  z-index: 10; }
+
 @media all and (max-width: 768px) {
   .logo {
-    top: 20px;
-    left: 20px; } }
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 4;
+    background-color: white;
+    height: 40px;
+    padding-top: 20px;
+    padding-left: 20px; } }
 .typography-logo, .logo {
   font-family: "Istok Web", sans-serif;
   font-size: 0.7em;
@@ -42,20 +56,29 @@
   font-weight: 300;
   line-height: 2em; }
 
-.typography-bold, .nav-listItem-heading {
+.typography-bold, .mobilemenu-button, .nav-listItem-heading {
   font-family: "Istok Web", sans-serif;
   font-size: 0.7em;
   letter-spacing: 0.1em;
   font-weight: 700; }
 
+.mobilemenu-button {
+  display: none;
+  text-transform: uppercase;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 20; }
+
 .nav {
   position: fixed;
   top: 50vh;
   left: 40px;
+  z-index: 20;
   width: 25%;
   height: 100vh;
   display: inline-block; }
-  .nav-list {
+  .nav ul {
     list-style: none;
     padding-left: 0; }
   .nav-listItem-heading {
@@ -63,13 +86,28 @@
   .nav-listItem {
     cursor: pointer;
     text-transform: uppercase; }
-  .nav-arrowdown {
+  .nav-arrow {
     height: 1em;
     display: inline-block; }
 
 @media all and (max-width: 768px) {
+  .mobilemenu-button {
+    display: block; }
+
   .nav {
-    display: none; } }
+    height: 380px;
+    width: 100%;
+    top: -350px;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    transition: top 0.5s ease-in-out;
+    z-index: 1;
+    padding-left: 20px; }
+    .nav--show {
+      top: 50px; }
+    .nav-list {
+      height: 0;
+      z-index: 2; } }
 .typography-logo, .logo {
   font-family: "Istok Web", sans-serif;
   font-size: 0.7em;
@@ -83,7 +121,7 @@
   font-weight: 300;
   line-height: 2em; }
 
-.typography-bold, .nav-listItem-heading {
+.typography-bold, .mobilemenu-button, .nav-listItem-heading {
   font-family: "Istok Web", sans-serif;
   font-size: 0.7em;
   letter-spacing: 0.1em;
@@ -106,12 +144,14 @@
     width: 100vw;
     margin: 70px 0; }
     .case-image {
-      width: calc(100% - 20px); } }
+      width: calc(100% - 30px);
+      padding: 15px 15px; } }
 html, body {
   margin: 0;
   padding: 0;
   position: relative;
   width: 100%;
+  height: 100%;
   overflow: auto; }
 
 body {
@@ -125,6 +165,6 @@ a {
 
 @media all and (max-width: 768px) {
   body {
-    font-size: 130%; } }
+    font-size: 110%; } }
 
 /*# sourceMappingURL=style.css.map */

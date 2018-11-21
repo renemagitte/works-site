@@ -5,6 +5,10 @@ function Main(){
   var _navListSetdesignsElement;
   var _navListSetdesignsItems;
   var _navLinks;
+  var _mobilemenuButton;
+  var _nav;
+  var _navList;
+  var _navArrow;
 
   var _caseContainer;
   var _caseOutput;
@@ -16,6 +20,12 @@ function Main(){
     _navListWorksElement = document.querySelector('.nav-list-works');
     _navListSetdesignsElement = document.querySelector('.nav-list-setdesigns');
     _caseContainer = document.querySelector('.case');
+    _mobilemenuButton = document.querySelector('.mobilemenu-button');
+    _nav = document.querySelector('.nav');
+    _navList = document.querySelector('.nav-list');
+    _navArrow = document.querySelector('.nav-arrow');
+
+    
 
     _navListWorksItems = [];
     _navListSetdesignsItems = [];
@@ -23,10 +33,18 @@ function Main(){
     createWorksList();
     createSetdesignsList();
 
+    _mobilemenuButton.addEventListener('click', toggleMobilemenu);
+    
 
     
   }
 
+  function toggleMobilemenu(){
+    _nav.classList.toggle('nav--show');
+
+    _nav.classList.contains('nav--show') ? _navArrow.src='assets/images/arrowup.png' : _navArrow.src='assets/images/arrowdown.png';
+    // _navArrow.src='assets/images/arrowup.png';
+  }
 
 
   function createWorksList(){
@@ -49,6 +67,9 @@ function Main(){
     navLinks();
   }
 
+
+  
+
   function navLinks(){
 
     _navLinks = document.querySelectorAll('.nav-listItem');
@@ -59,9 +80,9 @@ function Main(){
   }
 
   function displayCase(){
+    toggleMobilemenu();
     _caseOutput = '';
     _caseContainer.innerHTML = '';
-
 
     for(var i = 0; i < _worksArray.length; i++){
       if(_worksArray[i].id == this.dataset.id){
@@ -72,29 +93,18 @@ function Main(){
           }
           console.log(_caseOutput);
         }
-
         if(_worksArray[i].title && _worksArray[i].year){
           _caseOutput += '<p>' + _worksArray[i].title + ' (' + _worksArray[i].year + ')</p>'
         }
-
-
         if(_worksArray[i].exhibition){
           _caseOutput += '<p>' + _worksArray[i].exhibition + '</p>'
         }
-
         if(_worksArray[i].material){
           _caseOutput += '<p>' + _worksArray[i].material + '</p>'
         }
-
-
-       
       }
-      
     }
     _caseContainer.insertAdjacentHTML('beforeend', _caseOutput);
-
-
-
   }
 
 
