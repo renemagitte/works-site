@@ -6,5 +6,6 @@ setdesign.js
 images
 
 node_modules
+build/*.js
 
 *.jpg

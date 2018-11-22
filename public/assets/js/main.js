@@ -8,14 +8,15 @@ function Main(){
   var _navLinksSetdesign;
   var _mobilemenuButton;
   var _nav;
-  var _navList;
+  // var _navList;
   var _navArrow;
+  var _contactButton;
+  var _contactContainer;
+
 
   var _caseContainer;
   var _caseOutput;
 
-  
-  
 	function init() {
 
     _navListWorksItems = [];
@@ -25,24 +26,30 @@ function Main(){
     _caseContainer = document.querySelector('.case');
     _mobilemenuButton = document.querySelector('.mobilemenu-button');
     _nav = document.querySelector('.nav');
-    _navList = document.querySelector('.nav-list');
+    // _navList = document.querySelector('.nav-list');
     _navArrow = document.querySelector('.nav-arrow');
+    _contactButton = document.querySelector('.nav-listItem-contact');
+    _contactContainer = document.querySelector('.contact');
 
-    
-
+  
 
     createWorksList();
     createSetdesignsList();
 
     _mobilemenuButton.addEventListener('click', toggleMobilemenu);
-    
-
+    _contactButton.addEventListener('click', showContactPage);
     
   }
 
   function toggleMobilemenu(){
     _nav.classList.toggle('nav--show');
     _nav.classList.contains('nav--show') ? _navArrow.src='assets/images/arrowup.png' : _navArrow.src='assets/images/arrowdown.png';
+  }
+
+  function showContactPage(){
+    _caseContainer.innerHTML = '';
+    _contactContainer.style.display='inline-block';
+    toggleMobilemenu();
   }
 
 
@@ -85,6 +92,7 @@ function Main(){
   // This function builds and displays a  work case block
   function displayCase(){
     toggleMobilemenu();
+    _contactContainer.style.display='none';
     _caseOutput = '';
     _caseContainer.innerHTML = '';
 
@@ -113,6 +121,7 @@ function Main(){
   // This function builds and displays a setdesign case block
   function displayCaseSetdesign(){
     toggleMobilemenu();
+    _contactContainer.style.display='none';
     _caseOutput = '';
     _caseContainer.innerHTML = '';
 
