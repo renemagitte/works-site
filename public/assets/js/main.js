@@ -14,8 +14,10 @@ function Main(){
   var _contactContainer;
 
   var _navListWorksAllLink;
+  var _navListSetdesignAllLink;
+
   var _worksGalleryItems;
-  var _gallery;
+  var _setdesignGalleryItems;
 
   var _contentContainer;
 
@@ -85,6 +87,24 @@ function Main(){
 
   }
 
+  function showAllSetdesigns(){
+
+    _contentContainer.innerHTML = '';
+
+    var _gallery = document.createElement('div');
+    _gallery.classList.add('gallery');
+    _contentContainer.appendChild(_gallery);
+
+    _setdesignGalleryItems = [];
+    var _setdesign;
+    for(var i = 0; i < _setdesignArray.length; i++){
+      _setdesign = '<div class="gallery-item"><img src="assets/images/' + _setdesignArray[i].images[0] + '" class="gallery-item-image">' + _setdesignArray[i].title + ' (' + _setdesignArray[i].year + ')</div>';
+      _setdesignGalleryItems.push(_setdesign);
+    }
+    _gallery.insertAdjacentHTML('beforeend', _setdesignGalleryItems.join(''));
+
+  }
+
 
   function createWorksList(){
     var _worksLi;
@@ -126,24 +146,22 @@ function Main(){
 
     _navListWorksAllLink = document.querySelector('.nav-listItem-works-all');
     _navListWorksAllLink.addEventListener('click', showAllWorks);
+
+    _navListSetdesignAllLink = document.querySelector('.nav-listItem-setdesign-all');
+    _navListSetdesignAllLink.addEventListener('click', showAllSetdesigns);
   }
 
   // This function builds and displays a  work case block
   function displayCase(){
     toggleMobilemenu();
 
-    /* Clear content container */
     _contentContainer.innerHTML = '';
 
-    /* Create case container */
     var _case = document.createElement('div');
     _case.classList.add('case');
     _contentContainer.appendChild(_case);
 
-
-    // _contactContainer.style.display='none';
     _caseOutput = '';
-    // _caseContainer.innerHTML = '';
 
     for(var i = 0; i < _worksArray.length; i++){
       if(_worksArray[i].id == this.dataset.id){
@@ -171,18 +189,13 @@ function Main(){
   function displayCaseSetdesign(){
     toggleMobilemenu();
 
-    /* Clear content container */
     _contentContainer.innerHTML = '';
 
-    /* Create case container */
     var _case = document.createElement('div');
     _case.classList.add('case');
     _contentContainer.appendChild(_case);
 
-
-    // _contactContainer.style.display='none';
     _caseOutput = '';
-    // _caseContainer.innerHTML = '';
 
     for(var i = 0; i < _setdesignArray.length; i++){
       if(_setdesignArray[i].id == this.dataset.id){
