@@ -2,8 +2,8 @@
   "name": "works-site",
   "version": "0.0.1",
   "scripts": {
-    "css": "node-sass public/assets/sass/main.sass -o dist",
-    "css:watch": "npm run css && node-sass public/assets/sass/main.sass -wo dist"
+    "css": "node-sass src/sass -o public/assets/css",
+    "css:watch": "npm run css && node-sass src/sass -wo public/assets/css"
   },
   "dependencies": {
     "express": "^4.11.0",

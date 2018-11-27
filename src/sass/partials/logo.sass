@@ -10,14 +10,17 @@
   text-transform: uppercase
   @extend .typography-logo
 
+  a
+    text-decoration: none
+
 .sun
   position: fixed
-  top: 0px
-  left: 0px
-  height: 100%
-  z-index: 10
-
-  
+  bottom: 40px
+  right: 20px
+  // height: 100%
+  width: 650px
+  z-index: -1
+    
 
 @media all and (max-width: $breakpoint-mobile)
 
@@ -31,6 +34,9 @@
     height: 40px 
     padding-top: 20px
     padding-left: 20px
+
+  .sun
+    display: none
 
 
 

@@ -55,20 +55,23 @@ function Main(){
 
   function createWorksList(){
     var _worksLi;
-    for(var i = 0; i < _worksArray.length; i++){
+    // for(var i = 0; i < _worksArray.length; i++){
+    for(var i = 0; i < 5; i++){
       _worksLi = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksArray[i].id + '>' + _worksArray[i].title + '</li>';
       _navListWorksItems.push(_worksLi);
     }
+    _navListWorksItems.push('<li class="nav-listItem nav-listItem-works">View all...</li>');
     _navListWorksElement.insertAdjacentHTML('beforeend', _navListWorksItems.join(''));
 
   }
 
   function createSetdesignsList(){
     var _setdesignsLi;
-    for(var i = 0; i < _setdesignArray.length; i++){
+    for(var i = 0; i < 5; i++){
       _setdesignsLi = '<li class="nav-listItem nav-listItem-setdesign" data-id=' + _setdesignArray[i].id + '>' + _setdesignArray[i].title + '</li>';
       _navListSetdesignsItems.push(_setdesignsLi);
     }
+    _navListSetdesignsItems.push('<li class="nav-listItem nav-listItem-works">View all...</li>');
     _navListSetdesignsElement.insertAdjacentHTML('beforeend', _navListSetdesignsItems.join(''));
 
     navLinks();
