@@ -13,6 +13,12 @@ function Main(){
   var _contactButton;
   var _contactContainer;
 
+  var _navListWorksAllLink;
+  var _worksGalleryItems;
+  var _gallery;
+
+  var _contentContainer;
+
 
   var _caseContainer;
   var _caseOutput;
@@ -31,6 +37,12 @@ function Main(){
     _contactButton = document.querySelector('.nav-listItem-contact');
     _contactContainer = document.querySelector('.contact');
 
+    _worksGalleryItems = [];
+    _gallery = document.querySelector('.gallery');
+
+    _contentContainer = document.querySelector('.content');
+   
+
   
 
     createWorksList();
@@ -38,6 +50,8 @@ function Main(){
 
     _mobilemenuButton.addEventListener('click', toggleMobilemenu);
     _contactButton.addEventListener('click', showContactPage);
+
+
     
   }
 
@@ -52,6 +66,25 @@ function Main(){
     toggleMobilemenu();
   }
 
+  function showAllWorks(){
+    /* Clear content container */
+    _contentContainer.innerHTML = '';
+
+    /* Create gallery container */
+    var _gallery = document.createElement('div');
+    _gallery.classList.add('gallery');
+    _contentContainer.appendChild(_gallery);
+
+    _worksGalleryItems = [];
+    var _work;
+    for(var i = 0; i < _worksArray.length; i++){
+      _work = '<div class="gallery-item"><img src="assets/images/' + _worksArray[i].images[0] + '" class="gallery-item-image">' + _worksArray[i].title + ' (' + _worksArray[i].year + ')</div>';
+      _worksGalleryItems.push(_work);
+    }
+    _gallery.insertAdjacentHTML('beforeend', _worksGalleryItems.join(''));
+
+  }
+
 
   function createWorksList(){
     var _worksLi;
@@ -60,7 +93,7 @@ function Main(){
       _worksLi = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksArray[i].id + '>' + _worksArray[i].title + '</li>';
       _navListWorksItems.push(_worksLi);
     }
-    _navListWorksItems.push('<li class="nav-listItem nav-listItem-works">View all...</li>');
+    _navListWorksItems.push('<li class="nav-listItem nav-listItem-works nav-listItem-works-all">View all...</li>');
     _navListWorksElement.insertAdjacentHTML('beforeend', _navListWorksItems.join(''));
 
   }
@@ -71,7 +104,7 @@ function Main(){
       _setdesignsLi = '<li class="nav-listItem nav-listItem-setdesign" data-id=' + _setdesignArray[i].id + '>' + _setdesignArray[i].title + '</li>';
       _navListSetdesignsItems.push(_setdesignsLi);
     }
-    _navListSetdesignsItems.push('<li class="nav-listItem nav-listItem-works">View all...</li>');
+    _navListSetdesignsItems.push('<li class="nav-listItem nav-listItem-setdesign nav-listItem-setdesign-all">View all...</li>');
     _navListSetdesignsElement.insertAdjacentHTML('beforeend', _navListSetdesignsItems.join(''));
 
     navLinks();
@@ -90,14 +123,27 @@ function Main(){
     for(var i = 0; i < _navLinksSetdesign.length; i++){
       _navLinksSetdesign[i].addEventListener('click', displayCaseSetdesign);
     }
+
+    _navListWorksAllLink = document.querySelector('.nav-listItem-works-all');
+    _navListWorksAllLink.addEventListener('click', showAllWorks);
   }
 
   // This function builds and displays a  work case block
   function displayCase(){
     toggleMobilemenu();
-    _contactContainer.style.display='none';
+
+    /* Clear content container */
+    _contentContainer.innerHTML = '';
+
+    /* Create case container */
+    var _case = document.createElement('div');
+    _case.classList.add('case');
+    _contentContainer.appendChild(_case);
+
+
+    // _contactContainer.style.display='none';
     _caseOutput = '';
-    _caseContainer.innerHTML = '';
+    // _caseContainer.innerHTML = '';
 
     for(var i = 0; i < _worksArray.length; i++){
       if(_worksArray[i].id == this.dataset.id){
@@ -118,15 +164,25 @@ function Main(){
         }
       }
     }
-    _caseContainer.insertAdjacentHTML('beforeend', _caseOutput);
+    _case.insertAdjacentHTML('beforeend', _caseOutput);
   }
 
   // This function builds and displays a setdesign case block
   function displayCaseSetdesign(){
     toggleMobilemenu();
-    _contactContainer.style.display='none';
+
+    /* Clear content container */
+    _contentContainer.innerHTML = '';
+
+    /* Create case container */
+    var _case = document.createElement('div');
+    _case.classList.add('case');
+    _contentContainer.appendChild(_case);
+
+
+    // _contactContainer.style.display='none';
     _caseOutput = '';
-    _caseContainer.innerHTML = '';
+    // _caseContainer.innerHTML = '';
 
     for(var i = 0; i < _setdesignArray.length; i++){
       if(_setdesignArray[i].id == this.dataset.id){
@@ -153,7 +209,7 @@ function Main(){
 
       }
     }
-    _caseContainer.insertAdjacentHTML('beforeend', _caseOutput);
+    _case.insertAdjacentHTML('beforeend', _caseOutput);
   }
 
 
