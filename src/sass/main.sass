@@ -34,10 +34,15 @@ a
 .contact
   display: inline-block
   vertical-align: top
-  @extend .typography-regular
   max-width: 60%
   margin-left: 25%
   margin-top: 120px
+  p
+    @extend .typography-regular
+  &-heading
+    @extend .typography-bold
+    text-transform: uppercase
+
 
 
 
@@ -47,6 +52,13 @@ a
 
   body
     // font-size: 110%
+
+  .contact
+    max-width: 80%
+    margin-left: 0px
+    margin: 0 10%
+    margin-top: 70px
+
 
 
   

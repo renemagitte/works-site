@@ -103,7 +103,7 @@ function Main(){
     _contentContainer.appendChild(_contact);
 
     var _contactOutput;
-    _contactOutput = '<h1>Contact</h1><p>Installation, set design, curation - Paris & Stockholm</p><p>*telefonnummer*</p><p><a href="*m@ailadress*”_blank">*mail@dress.com*</a></p>';
+    _contactOutput = '<span class="contact-heading">Contact</span><p>Installation, set design, curation - Paris & Stockholm</p><p>*telefonnummer*</p><p><a href="*m@ailadress*”_blank">*mail@dress.com*</a></p>';
     _contact.insertAdjacentHTML('beforeend', _contactOutput);
 
   }
