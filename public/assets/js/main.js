@@ -53,9 +53,24 @@ function Main(){
     _mobilemenuButton.addEventListener('click', toggleMobilemenu);
     _contactButton.addEventListener('click', showContactPage);
 
+    window.addEventListener('scroll', desktopScrollNav)
 
     
   }
+
+  function desktopScrollNav(){
+    if(window.innerWidth > 1024){
+      if(window.scrollY > 284){
+        _nav.style.position='fixed';
+        _nav.style.top=70 + 'px';
+      }
+      if(window.scrollY < 284){
+        _nav.style.position='absolute';
+        _nav.style.top=50 + 'vh';
+      }
+    }
+  }
+
 
   function toggleMobilemenu(){
     _nav.classList.toggle('nav--show');
@@ -63,8 +78,6 @@ function Main(){
   }
 
   function showContactPage(){
-    // _caseContainer.innerHTML = '';
-    // _contactContainer.style.display='inline-block';
 
     toggleMobilemenu();
 
