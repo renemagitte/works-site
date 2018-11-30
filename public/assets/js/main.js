@@ -206,7 +206,7 @@ function Main(){
       if(_worksArray[i].id == this.dataset.id){
 
         if(_worksArray[i].title && _worksArray[i].year){
-          _caseOutput += '<p>' + _worksArray[i].title + ' (' + _worksArray[i].year + ')</p>'
+          _caseOutput += '<p><span class="case-value">' + _worksArray[i].title + ' (' + _worksArray[i].year + ')</span></p>'
         }
 
         if(_worksArray[i].images){
@@ -215,10 +215,10 @@ function Main(){
           }
         }
         if(_worksArray[i].exhibition){
-          _caseOutput += '<p>' + _worksArray[i].exhibition + '</p>'
+          _caseOutput += '<p><span class="case-value">' + _worksArray[i].exhibition + '</span></p>'
         }
         if(_worksArray[i].material){
-          _caseOutput += '<p>' + _worksArray[i].material + '</p>'
+          _caseOutput += '<p><span class="case-value">' + _worksArray[i].material + '</span></p>'
         }
       }
     }
@@ -241,7 +241,7 @@ function Main(){
       if(_setdesignArray[i].id == this.dataset.id){
         
         if(_setdesignArray[i].title){
-          _caseOutput += '<p>' + _setdesignArray[i].title + '</p>'
+          _caseOutput += '<p><span class="case-value">' + _setdesignArray[i].title + '</span></p>'
         }
 
         if(_setdesignArray[i].images){
@@ -254,11 +254,12 @@ function Main(){
         }
         if(_setdesignArray[i].desc){
           for(var j = 0; j < _setdesignArray[i].desc.length; j++){
-            _caseOutput += '<p><span class="case-key">' + _setdesignArray[i].desc[j][0] + '</span> ' + _setdesignArray[i].desc[j][1] + '</p>'
+            // _caseOutput += '<p><span class="case-key">' + _setdesignArray[i].desc[j][0] + '</span> ' + _setdesignArray[i].desc[j][1] + '</p>'
+            _caseOutput += '<p><span class="case-key">' + _setdesignArray[i].desc[j][0] + '</span> <span class="case-value">' + _setdesignArray[i].desc[j][1] + '</span></p>'
           }
         }
         if(_setdesignArray[i].text){
-          _caseOutput += '<p>' + _setdesignArray[i].text + '</p>'
+          _caseOutput += '<p><span class="case-value">' + _setdesignArray[i].text + '</span></p>'
         }
 
       }
