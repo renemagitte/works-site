@@ -63,9 +63,21 @@ function Main(){
   }
 
   function showContactPage(){
-    _caseContainer.innerHTML = '';
-    _contactContainer.style.display='inline-block';
+    // _caseContainer.innerHTML = '';
+    // _contactContainer.style.display='inline-block';
+
     toggleMobilemenu();
+
+    _contentContainer.innerHTML = '';
+
+    var _contact = document.createElement('div');
+    _contact.classList.add('contact');
+    _contentContainer.appendChild(_contact);
+
+    var _contactOutput;
+    _contactOutput = '<h1>Contact</h1><p>Installation, set design, curation - Paris & Stockholm</p><p>*telefonnummer*</p><p><a href="*m@ailadress*”_blank">*mail@dress.com*</a></p>';
+    _contact.insertAdjacentHTML('beforeend', _contactOutput);
+
   }
 
   function showAllWorks(){
@@ -113,7 +125,7 @@ function Main(){
       _worksLi = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksArray[i].id + '>' + _worksArray[i].title + '</li>';
       _navListWorksItems.push(_worksLi);
     }
-    _navListWorksItems.push('<li class="nav-listItem nav-listItem-works nav-listItem-works-all">View all...</li>');
+    _navListWorksItems.push('<li class="nav-listItem nav-listItem-works nav-listItem-works-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
     _navListWorksElement.insertAdjacentHTML('beforeend', _navListWorksItems.join(''));
 
   }
@@ -124,7 +136,7 @@ function Main(){
       _setdesignsLi = '<li class="nav-listItem nav-listItem-setdesign" data-id=' + _setdesignArray[i].id + '>' + _setdesignArray[i].title + '</li>';
       _navListSetdesignsItems.push(_setdesignsLi);
     }
-    _navListSetdesignsItems.push('<li class="nav-listItem nav-listItem-setdesign nav-listItem-setdesign-all">View all...</li>');
+    _navListSetdesignsItems.push('<li class="nav-listItem nav-listItem-setdesign nav-listItem-setdesign-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
     _navListSetdesignsElement.insertAdjacentHTML('beforeend', _navListSetdesignsItems.join(''));
 
     navLinks();
@@ -166,13 +178,14 @@ function Main(){
     for(var i = 0; i < _worksArray.length; i++){
       if(_worksArray[i].id == this.dataset.id){
 
+        if(_worksArray[i].title && _worksArray[i].year){
+          _caseOutput += '<p>' + _worksArray[i].title + ' (' + _worksArray[i].year + ')</p>'
+        }
+
         if(_worksArray[i].images){
           for(var j = 0; j < _worksArray[i].images.length; j++){
             _caseOutput += '<img src="assets/images/' + _worksArray[i].images[j] + '" class="case-image">';
           }
-        }
-        if(_worksArray[i].title && _worksArray[i].year){
-          _caseOutput += '<p>' + _worksArray[i].title + ' (' + _worksArray[i].year + ')</p>'
         }
         if(_worksArray[i].exhibition){
           _caseOutput += '<p>' + _worksArray[i].exhibition + '</p>'
@@ -199,6 +212,10 @@ function Main(){
 
     for(var i = 0; i < _setdesignArray.length; i++){
       if(_setdesignArray[i].id == this.dataset.id){
+        
+        if(_setdesignArray[i].title){
+          _caseOutput += '<p>' + _setdesignArray[i].title + '</p>'
+        }
 
         if(_setdesignArray[i].images){
           for(var j = 0; j < _setdesignArray[i].images.length; j++){
@@ -207,9 +224,6 @@ function Main(){
         }
         if(_setdesignArray[i].video){
           _caseOutput += '<iframe width="800" height="533" src="' + _setdesignArray[i].video + '" frameborder="0" allowfullscreen></iframe>'
-        }
-        if(_setdesignArray[i].title){
-          _caseOutput += '<p>' + _setdesignArray[i].title + '</p>'
         }
         if(_setdesignArray[i].desc){
           for(var j = 0; j < _setdesignArray[i].desc.length; j++){
