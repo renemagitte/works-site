@@ -4,7 +4,6 @@
 .gallery
   display: inline-block
   max-width: 60%
-  // height: 100%
   height: auto
   vertical-align: top
   margin-top: 100px
@@ -17,10 +16,14 @@
   &-item
     width: 200px
     height: 200px
+    margin: 20px 10px
+    text-align: center
     @extend .typography-regular
 
     &-image
-      width: 100%
+      width: 90%
+      display: block
+      margin: 0 auto
 
 
 @media all and (max-width: $breakpoint-mobile)

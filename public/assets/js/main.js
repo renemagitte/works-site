@@ -105,7 +105,7 @@ function Main(){
     _worksGalleryItems = [];
     var _work;
     for(var i = 0; i < _worksArray.length; i++){
-      _work = '<div class="gallery-item"><img src="assets/images/' + _worksArray[i].images[0] + '" class="gallery-item-image">' + _worksArray[i].title + ' (' + _worksArray[i].year + ')</div>';
+      _work = '<div class="gallery-item"><img src="assets/images/' + _worksArray[i].thumb + '" class="gallery-item-image">' + _worksArray[i].title + ' (' + _worksArray[i].year + ')</div>';
       _worksGalleryItems.push(_work);
     }
     _gallery.insertAdjacentHTML('beforeend', _worksGalleryItems.join(''));
@@ -123,7 +123,7 @@ function Main(){
     _setdesignGalleryItems = [];
     var _setdesign;
     for(var i = 0; i < _setdesignArray.length; i++){
-      _setdesign = '<div class="gallery-item"><img src="assets/images/' + _setdesignArray[i].images[0] + '" class="gallery-item-image">' + _setdesignArray[i].title + ' (' + _setdesignArray[i].year + ')</div>';
+      _setdesign = '<div class="gallery-item"><img src="assets/images/' + _setdesignArray[i].thumb + '" class="gallery-item-image">' + _setdesignArray[i].title + ' (' + _setdesignArray[i].year + ')</div>';
       _setdesignGalleryItems.push(_setdesign);
     }
     _gallery.insertAdjacentHTML('beforeend', _setdesignGalleryItems.join(''));
@@ -133,7 +133,6 @@ function Main(){
 
   function createWorksList(){
     var _worksLi;
-    // for(var i = 0; i < _worksArray.length; i++){
     for(var i = 0; i < 5; i++){
       _worksLi = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksArray[i].id + '>' + _worksArray[i].title + '</li>';
       _navListWorksItems.push(_worksLi);
