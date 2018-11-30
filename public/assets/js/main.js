@@ -53,16 +53,31 @@ function Main(){
     _mobilemenuButton.addEventListener('click', toggleMobilemenu);
     _contactButton.addEventListener('click', showContactPage);
 
-    window.addEventListener('scroll', desktopScrollNav)
+    window.addEventListener('scroll', desktopScrollNav);
+    window.addEventListener('resize', resizeNav);
 
     
+  }
+
+  function resizeNav(){
+    if(window.innerWidth < 769){
+      /* Issue with menu styling on resize... "solving" it by reloading page/css.. */
+      window.location.reload(false);
+      // _nav.style.position='absolute';
+      // _nav.style.top=60 + 'px';
+    }
+    if(window.innerWidth > 769){
+      window.location.reload(false);
+      // _nav.style.position='absolute';
+      // _nav.style.top=50 + 'vh';
+    }
   }
 
   function desktopScrollNav(){
     if(window.innerWidth > 1024){
       if(window.scrollY > 284){
         _nav.style.position='fixed';
-        _nav.style.top=70 + 'px';
+        _nav.style.top=60 + 'px';
       }
       if(window.scrollY < 284){
         _nav.style.position='absolute';
