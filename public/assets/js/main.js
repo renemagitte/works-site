@@ -25,6 +25,9 @@ function Main(){
   var _caseContainer;
   var _caseOutput;
 
+  var _galleryLinksWorks;
+  var _galleryLinksSetdesigns;
+
 	function init() {
 
     _navListWorksItems = [];
@@ -120,10 +123,12 @@ function Main(){
     _worksGalleryItems = [];
     var _work;
     for(var i = 0; i < _worksArray.length; i++){
-      _work = '<div class="gallery-item"><img src="assets/images/' + _worksArray[i].thumb + '" class="gallery-item-image">' + _worksArray[i].title + '</div>';
+      _work = '<div class="gallery-item gallery-item-works" data-id="' + _worksArray[i].id + '"><img src="assets/images/' + _worksArray[i].thumb + '" class="gallery-item-image">' + _worksArray[i].title + '</div>';
       _worksGalleryItems.push(_work);
     }
     _gallery.insertAdjacentHTML('beforeend', _worksGalleryItems.join(''));
+
+    galleryLinks();
 
   }
 
@@ -138,12 +143,56 @@ function Main(){
     _setdesignGalleryItems = [];
     var _setdesign;
     for(var i = 0; i < _setdesignArray.length; i++){
-      _setdesign = '<div class="gallery-item"><img src="assets/images/' + _setdesignArray[i].thumb + '" class="gallery-item-image">' + _setdesignArray[i].title + '</div>';
+      _setdesign = '<div class="gallery-item gallery-item-setdesign" data-id="' + _setdesignArray[i].id + '"><img src="assets/images/' + _setdesignArray[i].thumb + '" class="gallery-item-image">' + _setdesignArray[i].title + '</div>';
       _setdesignGalleryItems.push(_setdesign);
     }
     _gallery.insertAdjacentHTML('beforeend', _setdesignGalleryItems.join(''));
 
+    galleryLinks();
+
   }
+
+  // function showSetdesignCase(setDesignID){
+  //   toggleMobilemenu();
+
+  //   _contentContainer.innerHTML = '';
+
+  //   var _case = document.createElement('div');
+  //   _case.classList.add('case');
+  //   _contentContainer.appendChild(_case);
+
+  //   _caseOutput = '';
+
+  //   for(var i = 0; i < _setdesignArray.length; i++){
+  //     if(_setdesignArray[i].id == setDesignID){
+        
+  //       if(_setdesignArray[i].title){
+  //         _caseOutput += '<p><span class="case-value">' + _setdesignArray[i].title + '</span></p>'
+  //       }
+
+  //       if(_setdesignArray[i].images){
+  //         for(var j = 0; j < _setdesignArray[i].images.length; j++){
+  //           _caseOutput += '<img src="assets/images/' + _setdesignArray[i].images[j] + '" class="case-image">';
+  //         }
+  //       }
+  //       if(_setdesignArray[i].video){
+  //         _caseOutput += '<iframe width="800" height="533" src="' + _setdesignArray[i].video + '" frameborder="0" allowfullscreen></iframe>'
+  //       }
+  //       if(_setdesignArray[i].desc){
+  //         for(var j = 0; j < _setdesignArray[i].desc.length; j++){
+  //           // _caseOutput += '<p><span class="case-key">' + _setdesignArray[i].desc[j][0] + '</span> ' + _setdesignArray[i].desc[j][1] + '</p>'
+  //           _caseOutput += '<p><span class="case-key">' + _setdesignArray[i].desc[j][0] + '</span> <span class="case-value">' + _setdesignArray[i].desc[j][1] + '</span></p>'
+  //         }
+  //       }
+  //       if(_setdesignArray[i].text){
+  //         _caseOutput += '<p><span class="case-value">' + _setdesignArray[i].text + '</span></p>'
+  //       }
+
+  //     }
+  //   }
+  //   _case.insertAdjacentHTML('beforeend', _caseOutput);
+
+  // }
 
 
   function createWorksList(){
@@ -188,6 +237,21 @@ function Main(){
 
     _navListSetdesignAllLink = document.querySelector('.nav-listItem-setdesign-all');
     _navListSetdesignAllLink.addEventListener('click', showAllSetdesigns);
+  }
+
+  function galleryLinks(){
+
+
+    _galleryLinksWorks = document.querySelectorAll('.gallery-item-works');
+    for(var i = 0; i < _galleryLinksWorks.length; i++){
+      _galleryLinksWorks[i].addEventListener('click', displayCase);
+    }
+
+    _galleryLinksSetdesigns = document.querySelectorAll('.gallery-item-setdesign');
+    for(var i = 0; i < _galleryLinksSetdesigns.length; i++){
+      _galleryLinksSetdesigns[i].addEventListener('click', displayCaseSetdesign);
+    }
+
   }
 
   // This function builds and displays a  work case block
