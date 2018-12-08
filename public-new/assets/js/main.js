@@ -1,10 +1,10 @@
 function Main(){
 
   var _navList;
-  var _navLinksSetdesigns;
+  var _navLinksShows;
   var _navLinksEditorials;
   var _navLinksEditorialsAll;
-  var _navLinksSetdesignsAll;
+  var _navLinksShowsAll;
   var _navLinksWorksAll;
   var _contactButton;
 
@@ -51,21 +51,21 @@ function Main(){
     _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--editorials">Editorials</li>');
     _allNavItems.push('<ul>');
     for(var i = 0; i < 5; i++){
-      _editorialsItem = '<li class="nav-listItem nav-listItem-editorials" data-id=' + _editorialsArray[i].id + '>' + _editorialsArray[i].title + '</li>';
+      _editorialsItem = '<li class="nav-listItem nav-listItem-editorials" data-id=' + _editorialsData[i].id + '>' + _editorialsData[i].title + '</li>';
       _allNavItems.push(_editorialsItem);
     }
     _allNavItems.push('<li class="nav-listItem nav-listItem-editorials nav-listItem-editorials-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
     _allNavItems.push('</ul>');
 
-    // Building setdesigns submenu
-    var _setdesignsItem;
-    _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--setdesigns">Setdesigns</li>');
+    // Building shows submenu
+    var _showsItem;
+    _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--shows">Shows</li>');
     _allNavItems.push('<ul>');
-    for(var i = 0; i < 5; i++){
-      _setdesignsItem = '<li class="nav-listItem nav-listItem-setdesigns" data-id=' + _setdesignsArray[i].id + '>' + _setdesignsArray[i].title + '</li>';
-      _allNavItems.push(_setdesignsItem);
+    for(var i = 0; i < 2; i++){
+      _showsItem = '<li class="nav-listItem nav-listItem-shows" data-id=' + _showsData[i].id + '>' + _showsData[i].title + '</li>';
+      _allNavItems.push(_showsItem);
     }
-    _allNavItems.push('<li class="nav-listItem nav-listItem-setdesigns nav-listItem-setdesigns-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
+    _allNavItems.push('<li class="nav-listItem nav-listItem-shows nav-listItem-shows-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
     _allNavItems.push('</ul>');
 
     // Building works submenu
@@ -73,7 +73,7 @@ function Main(){
     _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--works">works</li>');
     _allNavItems.push('<ul>');
     for(var i = 0; i < 0; i++){
-      _worksItem = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksArray[i].id + '>' + _worksArray[i].title + '</li>';
+      _worksItem = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksData[i].id + '>' + _worksData[i].title + '</li>';
       _allNavItems.push(_worksItem);
     }
     _allNavItems.push('<li class="nav-listItem nav-listItem-works nav-listItem-works-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
@@ -98,32 +98,32 @@ function Main(){
       let _editorialsId = _navLinksEditorials[i].dataset.id;
 
       _navLinksEditorials[i].addEventListener("click", function(){
-        displayCase(_editorialsArray, _editorialsId);
+        displayCase(_editorialsData, _editorialsId);
       });
     }
     _navLinksEditorialsAll = document.querySelector('.nav-listItem-editorials-all');
     _navLinksEditorialsAll.addEventListener("click", function(){
-      displayGallery(_editorialsArray, 'editorials');
+      displayGallery(_editorialsData, 'editorials');
     });
 
-    // Setdesign submenu links
-    _navLinksSetdesigns = document.querySelectorAll('.nav-listItem-setdesigns');
-    for(var i = 0; i < _navLinksSetdesigns.length; i++){
-      let _setdesignId = _navLinksSetdesigns[i].dataset.id;
+    // Show submenu links
+    _navLinksShows = document.querySelectorAll('.nav-listItem-shows');
+    for(var i = 0; i < _navLinksShows.length; i++){
+      let _showId = _navLinksShows[i].dataset.id;
       
-      _navLinksSetdesigns[i].addEventListener("click", function(){
-        displayCase(_setdesignsArray, _setdesignId);
+      _navLinksShows[i].addEventListener("click", function(){
+        displayCase(_showsData, _showId);
       });
     }
-    _navLinksSetdesignsAll = document.querySelector('.nav-listItem-setdesigns-all');
-    _navLinksSetdesignsAll.addEventListener("click", function(){
-      displayGallery(_setdesignsArray, 'setdesigns');
+    _navLinksShowsAll = document.querySelector('.nav-listItem-shows-all');
+    _navLinksShowsAll.addEventListener("click", function(){
+      displayGallery(_showsData, 'shows');
     });
 
     // Works link
     _navLinksWorksAll = document.querySelector('.nav-listItem-works-all');
     _navLinksWorksAll.addEventListener("click", function(){
-      displayGallery(_worksArray, 'works');
+      displayGallery(_worksData, 'works');
     });
 
     // Contact link
@@ -215,7 +215,7 @@ function Main(){
 
 
 
-  // Builds and displays a case (editorial, setdesign or work)
+  // Builds and displays a case (editorial, show or work)
   function displayCase(array, id){
     // toggleMobilemenu();
 
