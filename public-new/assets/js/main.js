@@ -175,6 +175,8 @@ function Main(){
   // Building gallery (view all)
   function displayGallery(array, type){
 
+      _nav.classList.remove('nav--show');
+
       _contentContainer.innerHTML = '';
 
       _gallery = document.createElement('div');
