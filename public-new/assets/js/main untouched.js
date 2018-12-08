@@ -4,6 +4,8 @@ function Main(){
   var _navListWorksItems;
   var _navListSetdesignsElement;
   var _navListSetdesignsItems;
+  var _navListEditorialsElement;
+  var _navListEditorialsItems;
   var _navLinksWorks;
   var _navLinksSetdesign;
   var _mobilemenuButton;
@@ -30,14 +32,15 @@ function Main(){
 
 	function init() {
 
+    _navListEditorialsItems = [];
     _navListWorksItems = [];
     _navListSetdesignsItems = [];
+    _navListEditorialsElement = document.querySelector('.nav-list-editorials');
     _navListWorksElement = document.querySelector('.nav-list-works');
     _navListSetdesignsElement = document.querySelector('.nav-list-setdesigns');
     _caseContainer = document.querySelector('.case');
     _mobilemenuButton = document.querySelector('.mobilemenu-button');
     _nav = document.querySelector('.nav');
-    // _navList = document.querySelector('.nav-list');
     _navArrow = document.querySelector('.nav-arrow');
     _contactButton = document.querySelector('.nav-listItem-contact');
     _contactContainer = document.querySelector('.contact');
@@ -49,7 +52,7 @@ function Main(){
    
 
   
-
+    createEditorialsList();
     createWorksList();
     createSetdesignsList();
 
@@ -97,19 +100,14 @@ function Main(){
   }
 
   function showContactPage(){
-
     toggleMobilemenu();
-
     _contentContainer.innerHTML = '';
-
     var _contact = document.createElement('div');
     _contact.classList.add('contact');
     _contentContainer.appendChild(_contact);
-
     var _contactOutput;
     _contactOutput = '<span class="contact-heading">Contact</span><p>Installation, set design, curation - Paris & Stockholm</p><p>*telefonnummer*</p><p><a href="*m@ailadress*”_blank">*mail@dress.com*</a></p>';
     _contact.insertAdjacentHTML('beforeend', _contactOutput);
-
   }
 
   function showAllWorks(){
@@ -196,15 +194,26 @@ function Main(){
   // }
 
 
-  function createWorksList(){
-    var _worksLi;
+  /******* Creating nav list *******/
+
+  function createEditorialsList(){
+    var _editorialsLi;
     for(var i = 0; i < 5; i++){
-      _worksLi = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksArray[i].id + '>' + _worksArray[i].title + '</li>';
-      _navListWorksItems.push(_worksLi);
+      _editorialsLi = '<li class="nav-listItem nav-listItem-editorials" data-id=' + _editorialsArray[i].id + '>' + _editorialsArray[i].title + '</li>';
+      _navListEditorialsItems.push(_editorialsLi);
     }
+    _navListEditorialsItems.push('<li class="nav-listItem nav-listItem-editorials nav-listItem-editorials-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
+    _navListEditorialsElement.insertAdjacentHTML('beforeend', _navListEditorialsItems.join(''));
+  }
+
+  function createWorksList(){
+    // var _worksLi;
+    // for(var i = 0; i < 5; i++){
+    //   _worksLi = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksArray[i].id + '>' + _worksArray[i].title + '</li>';
+    //   _navListWorksItems.push(_worksLi);
+    // }
     _navListWorksItems.push('<li class="nav-listItem nav-listItem-works nav-listItem-works-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
     _navListWorksElement.insertAdjacentHTML('beforeend', _navListWorksItems.join(''));
-
   }
 
   function createSetdesignsList(){
@@ -219,10 +228,14 @@ function Main(){
     navLinks();
   }
 
-
-  
-
   function navLinks(){
+
+    _navEditorialsWorks = document.querySelectorAll('.nav-listItem-editorials');
+    for(var i = 0; i < _navEditorialsWorks.length; i++){
+      _navEditorialsWorks[i].addEventListener('click', displayEditorial);
+    }
+
+
     _navLinksWorks = document.querySelectorAll('.nav-listItem-works');
     for(var i = 0; i < _navLinksWorks.length; i++){
       _navLinksWorks[i].addEventListener('click', displayCase);
@@ -254,6 +267,47 @@ function Main(){
     }
 
   }
+
+    // This function builds and displays an editorial case block
+    function displayEditorial(){
+
+      _nav.classList.remove('nav--show');
+  
+      // toggleMobilemenu();
+  
+      _contentContainer.innerHTML = '';
+  
+      var _case = document.createElement('div');
+      _case.classList.add('case');
+      _contentContainer.appendChild(_case);
+  
+      _caseOutput = '';
+
+      console.log(_editorialsArray);
+  
+      for(var i = 0; i < _editorialsArray.length; i++){
+        if(_editorialsArray[i].id == this.dataset.id){
+  
+          if(_editorialsArray[i].title && _editorialsArray[i].year){
+            _caseOutput += '<p><span class="case-value">' + _editorialsArray[i].title + ' (' + _editorialsArray[i].year + ')</span></p>'
+          }
+  
+          if(_editorialsArray[i].images){
+            for(var j = 0; j < _editorialsArray[i].images.length; j++){
+              _caseOutput += '<img src="assets/images/' + _editorialsArray[i].images[j] + '" class="case-image">';
+            }
+          }
+          if(_editorialsArray[i].exhibition){
+            _caseOutput += '<p><span class="case-value">' + _editorialsArray[i].exhibition + '</span></p>'
+          }
+          if(_editorialsArray[i].material){
+            _caseOutput += '<p><span class="case-value">' + _editorialsArray[i].material + '</span></p>'
+          }
+        }
+      }
+      _case.insertAdjacentHTML('beforeend', _caseOutput);
+    }
+
 
   // This function builds and displays a  work case block
   function displayCase(){

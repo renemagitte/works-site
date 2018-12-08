@@ -3,6 +3,7 @@ indextest.html
 
 works.js
 setdesign.js
+editorials.js
 
 images
 
@@ -10,4 +11,3 @@ node_modules
 build/*.js
 
 *.jpg
-*.wav

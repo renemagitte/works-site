@@ -1,6 +1,12 @@
 @import '../global/typography'
 @import '../global/variables'
 
+
+iframe
+  border: 2px solid red
+  width: 600px
+  height: 400px
+
 .case
   display: inline-block
   max-width: 60%
@@ -16,12 +22,20 @@
 
   &-image
     padding: 10px 0
-    width: 800px
+    // width: 800px
+    width: 100%
   &-key
     text-transform: uppercase
     @extend .typography-bold
   &-value
     @extend .typography-regular
+
+
+@media all and (max-width: $breakpoint-tablet)
+
+  .case
+    max-width: 60%
+    margin-left: 30%
 
 
 @media all and (max-width: $breakpoint-mobile)
@@ -32,8 +46,11 @@
     margin: 70px 0
     margin-bottom: 0
     padding-left: 15px
+    margin-left: 0 auto
     &-image
       width: calc(100% - 30px)
     p
       width: calc(100% - 30px)
       margin: 5px 0
+
+
