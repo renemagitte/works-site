@@ -1,83 +1,51 @@
 function Main(){
 
-  var _navListWorksElement;
-  var _navListWorksItems;
-  var _navListSetdesignsElement;
-  var _navListSetdesignsItems;
-  var _navListEditorialsElement;
-  var _navListEditorialsItems;
-  var _navLinksWorks;
-  var _navLinksSetdesign;
-  var _mobilemenuButton;
-  var _nav;
   var _navList;
-  var _navArrow;
+  var _navLinksSetdesigns;
+  var _navLinksEditorials;
+  var _navLinksEditorialsAll;
+  var _navLinksSetdesignsAll;
+  var _navLinksWorksAll;
   var _contactButton;
-  var _contactContainer;
 
-  var _navListWorksAllLink;
-  var _navListSetdesignAllLink;
-
-  var _worksGalleryItems;
-  var _setdesignGalleryItems;
+  var _nav;
+  var _navArrow;
+  var _mobilemenuButton;
 
   var _contentContainer;
-
-
-  var _caseContainer;
   var _caseOutput;
 
-  var _galleryLinksWorks;
-  var _galleryLinksSetdesigns;
+  var _gallery;
+  var _galleryItem;
+  var _galleryItems;
+  var _galleryLinks;
+
+
+
+
+
+
 
 	function init() {
 
     _navList = document.querySelector('.nav-list');
-
-    
-
-    _navListEditorialsItems = [];
-    _navListWorksItems = [];
-    _navListSetdesignsItems = [];
-    _navListEditorialsElement = document.querySelector('.nav-list-editorials');
-    _navListWorksElement = document.querySelector('.nav-list-works');
-    _navListSetdesignsElement = document.querySelector('.nav-list-setdesigns');
-    _caseContainer = document.querySelector('.case');
-    _mobilemenuButton = document.querySelector('.mobilemenu-button');
     _nav = document.querySelector('.nav');
     _navArrow = document.querySelector('.nav-arrow');
-    _contactButton = document.querySelector('.nav-listItem-contact');
-    _contactContainer = document.querySelector('.contact');
-
-    _worksGalleryItems = [];
-    _gallery = document.querySelector('.gallery');
-
+    _mobilemenuButton = document.querySelector('.mobilemenu-button');
     _contentContainer = document.querySelector('.content');
-   
-
   
-    // createEditorialsList();
-    // createWorksList();
-    // createSetdesignsList();
-
     createNav();
 
     _mobilemenuButton.addEventListener('click', toggleMobilemenu);
-    _contactButton.addEventListener('click', displayContactPage);
-
     window.addEventListener('scroll', desktopScrollNav);
-    // window.addEventListener('resize', resizeNav);
-
-    
+    // window.addEventListener('resize', resizeNav);    
   }
 
 
   function createNav(){
 
     var _allNavItems = [];
-
-    
-    
+  
     // Building editoral submenu
     var _editorialsItem;
     _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--editorials">Editorials</li>');
@@ -100,9 +68,67 @@ function Main(){
     _allNavItems.push('<li class="nav-listItem nav-listItem-setdesigns nav-listItem-setdesigns-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
     _allNavItems.push('</ul>');
 
+    // Building works submenu
+    var _worksItem;
+    _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--works">works</li>');
+    _allNavItems.push('<ul>');
+    for(var i = 0; i < 0; i++){
+      _worksItem = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksArray[i].id + '>' + _worksArray[i].title + '</li>';
+      _allNavItems.push(_worksItem);
+    }
+    _allNavItems.push('<li class="nav-listItem nav-listItem-works nav-listItem-works-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
+    _allNavItems.push('</ul>');
 
-
+    // Building contact link
+    _allNavItems.push('<li class="nav-listItem-heading nav-listItem-contact">Contact</li>');
+    
+    // Insert nav list to DOM
     _navList.insertAdjacentHTML('beforeend', _allNavItems.join(''));
+
+    // Add links to created elements
+     addNavLinks();
+
+  }
+
+  function addNavLinks(){
+
+    // Editorial submenu links
+    _navLinksEditorials = document.querySelectorAll('.nav-listItem-editorials');
+    for(var i = 0; i < (_navLinksEditorials.length - 1); i++){
+      let _editorialsId = _navLinksEditorials[i].dataset.id;
+
+      _navLinksEditorials[i].addEventListener("click", function(){
+        displayCase(_editorialsArray, _editorialsId);
+      });
+    }
+    _navLinksEditorialsAll = document.querySelector('.nav-listItem-editorials-all');
+    _navLinksEditorialsAll.addEventListener("click", function(){
+      displayGallery(_editorialsArray, 'editorials');
+    });
+
+    // Setdesign submenu links
+    _navLinksSetdesigns = document.querySelectorAll('.nav-listItem-setdesigns');
+    for(var i = 0; i < _navLinksSetdesigns.length; i++){
+      let _setdesignId = _navLinksSetdesigns[i].dataset.id;
+      
+      _navLinksSetdesigns[i].addEventListener("click", function(){
+        displayCase(_setdesignsArray, _setdesignId);
+      });
+    }
+    _navLinksSetdesignsAll = document.querySelector('.nav-listItem-setdesigns-all');
+    _navLinksSetdesignsAll.addEventListener("click", function(){
+      displayGallery(_setdesignsArray, 'setdesigns');
+    });
+
+    // Works link
+    _navLinksWorksAll = document.querySelector('.nav-listItem-works-all');
+    _navLinksWorksAll.addEventListener("click", function(){
+      displayGallery(_worksArray, 'works');
+    });
+
+    // Contact link
+    _contactButton = document.querySelector('.nav-listItem-contact');
+    _contactButton.addEventListener('click', displayContactPage);
 
   }
 
@@ -139,133 +165,45 @@ function Main(){
   function toggleMobilemenu(){
     _nav.classList.toggle('nav--show');
     _nav.classList.contains('nav--show') ? _navArrow.src='assets/images/arrowup.png' : _navArrow.src='assets/images/arrowdown.png';
-
   }
 
-  var baz = function() { return "foo"; } 
 
 
 
-  function showAllWorks(){
-    /* Clear content container */
-    _contentContainer.innerHTML = '';
 
-    /* Create gallery container */
-    var _gallery = document.createElement('div');
-    _gallery.classList.add('gallery');
-    _contentContainer.appendChild(_gallery);
 
-    _worksGalleryItems = [];
-    var _work;
-    for(var i = 0; i < _worksArray.length; i++){
-      _work = '<div class="gallery-item gallery-item-works" data-id="' + _worksArray[i].id + '"><img src="assets/images/' + _worksArray[i].thumb + '" class="gallery-item-image">' + _worksArray[i].title + '</div>';
-      _worksGalleryItems.push(_work);
-    }
-    _gallery.insertAdjacentHTML('beforeend', _worksGalleryItems.join(''));
+  // Building gallery (view all)
+  function displayGallery(array, type){
 
-    galleryLinks();
+      _contentContainer.innerHTML = '';
 
-  }
+      _gallery = document.createElement('div');
+      _gallery.classList.add('gallery');
+      _contentContainer.appendChild(_gallery);
 
-  function showAllSetdesigns(){
-
-    _contentContainer.innerHTML = '';
-
-    var _gallery = document.createElement('div');
-    _gallery.classList.add('gallery');
-    _contentContainer.appendChild(_gallery);
-
-    _setdesignGalleryItems = [];
-    var _setdesign;
-    for(var i = 0; i < _setdesignArray.length; i++){
-      _setdesign = '<div class="gallery-item gallery-item-setdesign" data-id="' + _setdesignArray[i].id + '"><img src="assets/images/' + _setdesignArray[i].thumb + '" class="gallery-item-image">' + _setdesignArray[i].title + '</div>';
-      _setdesignGalleryItems.push(_setdesign);
-    }
-    _gallery.insertAdjacentHTML('beforeend', _setdesignGalleryItems.join(''));
-
-    galleryLinks();
+      _galleryItems = [];
+      var galleryClass = 'gallery-item-' + type;
+      for(var i = 0; i < array.length; i++){
+        _galleryItem= '<div class="gallery-item ' + galleryClass + '" data-id="' + array[i].id + '"><img src="assets/images/' + array[i].thumb + '" class="gallery-item-image">' + array[i].title + '</div>';
+        _galleryItems.push(_galleryItem);
+      }
+      _gallery.insertAdjacentHTML('beforeend', _galleryItems.join(''));
+  
+      addGalleryLinks(array, galleryClass);
 
   }
 
 
-  /******* Creating nav list *******/
+  function addGalleryLinks(array, typeClass){
 
-  function createEditorialsList(){
-    var _editorialsLi;
-    for(var i = 0; i < 5; i++){
-      _editorialsLi = '<li onClick="baz()" class="nav-listItem nav-listItem-editorials" data-id=' + _editorialsArray[i].id + '>' + _editorialsArray[i].title + '</li>';
-      _navListEditorialsItems.push(_editorialsLi);
-    }
-    _navListEditorialsItems.push('<li class="nav-listItem nav-listItem-editorials nav-listItem-editorials-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
-    _navListEditorialsElement.insertAdjacentHTML('beforeend', _navListEditorialsItems.join(''));
-  }
+    _galleryLinks = document.querySelectorAll('.' + typeClass);
 
-  function createWorksList(){
-    // var _worksLi;
-    // for(var i = 0; i < 5; i++){
-    //   _worksLi = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksArray[i].id + '>' + _worksArray[i].title + '</li>';
-    //   _navListWorksItems.push(_worksLi);
-    // }
-    _navListWorksItems.push('<li class="nav-listItem nav-listItem-works nav-listItem-works-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
-    _navListWorksElement.insertAdjacentHTML('beforeend', _navListWorksItems.join(''));
-  }
-
-  function createSetdesignsList(){
-    var _setdesignsLi;
-    for(var i = 0; i < 5; i++){
-      _setdesignsLi = '<li class="nav-listItem nav-listItem-setdesign" data-id=' + _setdesignArray[i].id + '>' + _setdesignArray[i].title + '</li>';
-      _navListSetdesignsItems.push(_setdesignsLi);
-    }
-    _navListSetdesignsItems.push('<li class="nav-listItem nav-listItem-setdesign nav-listItem-setdesign-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
-    _navListSetdesignsElement.insertAdjacentHTML('beforeend', _navListSetdesignsItems.join(''));
-
-    // navLinks();
-  }
-
-  function navLinks(){
-
-    _navLinksEditorials = document.querySelectorAll('.nav-listItem-editorials');
-    for(var i = 0; i < _navLinksEditorials.length; i++){
-      // _navLinksEditorials[i].addEventListener('click', displayEditorial);
-
-      // console.log(_navLinksEditorials[i].dataset.id);
-
-      let _dataSetId = _navLinksEditorials[i].dataset.id;
-
-      _navLinksEditorials[i].addEventListener("click", function(){
-        displayCase(_editorialsArray, _dataSetId);
+    for(var i = 0; i < _galleryLinks.length; i++){
+      let _arrayId = _galleryLinks[i].dataset.id;
+      
+      _galleryLinks[i].addEventListener("click", function(){
+        displayCase(array, _arrayId);
       });
-    }
-
-
-    _navLinksWorks = document.querySelectorAll('.nav-listItem-works');
-    for(var i = 0; i < _navLinksWorks.length; i++){
-      _navLinksWorks[i].addEventListener('click', displayCase);
-    }
-
-    _navLinksSetdesign = document.querySelectorAll('.nav-listItem-setdesign');
-    for(var i = 0; i < _navLinksSetdesign.length; i++){
-      _navLinksSetdesign[i].addEventListener('click', displayCaseSetdesign);
-    }
-
-    _navListWorksAllLink = document.querySelector('.nav-listItem-works-all');
-    _navListWorksAllLink.addEventListener('click', showAllWorks);
-
-    _navListSetdesignAllLink = document.querySelector('.nav-listItem-setdesign-all');
-    _navListSetdesignAllLink.addEventListener('click', showAllSetdesigns);
-  }
-
-  function galleryLinks(){
-
-
-    _galleryLinksWorks = document.querySelectorAll('.gallery-item-works');
-    for(var i = 0; i < _galleryLinksWorks.length; i++){
-      _galleryLinksWorks[i].addEventListener('click', displayCase);
-    }
-
-    _galleryLinksSetdesigns = document.querySelectorAll('.gallery-item-setdesign');
-    for(var i = 0; i < _galleryLinksSetdesigns.length; i++){
-      _galleryLinksSetdesigns[i].addEventListener('click', displayCaseSetdesign);
     }
 
   }
@@ -277,18 +215,21 @@ function Main(){
 
 
 
-  // This function builds and displays a case (editorial, setdesign or work)
+  // Builds and displays a case (editorial, setdesign or work)
   function displayCase(array, id){
     // toggleMobilemenu();
 
     var _obj = findObjectByKey(array, 'id', id);
 
     _nav.classList.remove('nav--show');
+
     _contentContainer.innerHTML = '';
+    _caseOutput = '';
+
     var _case = document.createElement('div');
     _case.classList.add('case');
     _contentContainer.appendChild(_case);
-    _caseOutput = '';
+
 
     if(_obj.title){
       _caseOutput += '<p><span class="case-value">' + _obj.title + '</span></p>'
@@ -315,7 +256,7 @@ function Main(){
 
 
 
-  // This function builds and displays contact page
+  // Builds and displays contact section
   function displayContactPage(){
     toggleMobilemenu();
     _contentContainer.innerHTML = '';
