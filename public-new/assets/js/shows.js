@@ -2,9 +2,9 @@
 
 
     { 
-      title: 'Ludovic de Saint Sernin SS19', 
+      title: 'Ludovic de Saint Sernin Printemps Ete 19', 
+      menuName: 'udovic de Saint Sernin SS19',
       id: 'saintsernin-ss19', 
-      // heading: 'Ludivoc De Saint Sernin Printemps Ete 2019', 
       desc: [
         [ 'Photograpy', 'Pascal Gambarte' ],
         [ 'Casting', 'Piotr Chamier' ],
@@ -22,9 +22,9 @@
     },
 
     { 
-      title: 'Ludovic de Saint Sernin SS18', 
+      title: 'Ludovic de Saint Sernin Printemps Ete 18', 
+      menuName: 'Ludovic de Saint Sernin SS18',
       id: 'saintsernin-ss18', 
-      // heading: 'Ludivoc De Saint Sernin Printemps Ete 2018', 
       desc: [
         [ 'Photograpy', 'Pascal Gambarte' ],
         [ 'Casting', 'Piotr Chamier' ],

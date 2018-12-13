@@ -51,7 +51,7 @@ function Main(){
     _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--editorials">Editorials</li>');
     _allNavItems.push('<ul>');
     for(var i = 0; i < 5; i++){
-      _editorialsItem = '<li class="nav-listItem nav-listItem-editorials" data-id=' + _editorialsData[i].id + '>' + _editorialsData[i].title + '</li>';
+      _editorialsItem = '<li class="nav-listItem nav-listItem-editorials" data-id=' + _editorialsData[i].id + '>' + _editorialsData[i].menuName + '</li>';
       _allNavItems.push(_editorialsItem);
     }
     _allNavItems.push('<li class="nav-listItem nav-listItem-editorials nav-listItem-editorials-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
@@ -62,7 +62,7 @@ function Main(){
     _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--shows">Shows</li>');
     _allNavItems.push('<ul>');
     for(var i = 0; i < 2; i++){
-      _showsItem = '<li class="nav-listItem nav-listItem-shows" data-id=' + _showsData[i].id + '>' + _showsData[i].title + '</li>';
+      _showsItem = '<li class="nav-listItem nav-listItem-shows" data-id=' + _showsData[i].id + '>' + _showsData[i].menuName + '</li>';
       _allNavItems.push(_showsItem);
     }
     _allNavItems.push('<li class="nav-listItem nav-listItem-shows nav-listItem-shows-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
@@ -73,7 +73,7 @@ function Main(){
     _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--works">works</li>');
     _allNavItems.push('<ul>');
     for(var i = 0; i < 0; i++){
-      _worksItem = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksData[i].id + '>' + _worksData[i].title + '</li>';
+      _worksItem = '<li class="nav-listItem nav-listItem-works" data-id=' + _worksData[i].id + '>' + _worksData[i].menuName + '</li>';
       _allNavItems.push(_worksItem);
     }
     _allNavItems.push('<li class="nav-listItem nav-listItem-works nav-listItem-works-all">View all... <img src="assets/images/arrowright.png" class="nav-arrow"></li>');
