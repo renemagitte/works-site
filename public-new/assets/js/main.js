@@ -38,7 +38,9 @@ function Main(){
 
     _mobilemenuButton.addEventListener('click', toggleMobilemenu);
     window.addEventListener('scroll', desktopScrollNav);
-    // window.addEventListener('resize', resizeNav);    
+    // window.addEventListener('resize', resizeNav); 
+    
+    DrawingCanvas();
   }
 
 
@@ -48,7 +50,7 @@ function Main(){
   
     // Building editoral submenu
     var _editorialsItem;
-    _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--editorials">Editorials</li>');
+    _allNavItems.push('<li class="nav-listItem-heading nav-listItem-heading--editorials">Editorial</li>');
     _allNavItems.push('<ul>');
     for(var i = 0; i < 5; i++){
       _editorialsItem = '<li class="nav-listItem nav-listItem-editorials" data-id=' + _editorialsData[i].id + '>' + _editorialsData[i].menuName + '</li>';
@@ -220,6 +222,8 @@ function Main(){
   // Builds and displays a case (editorial, show or work)
   function displayCase(array, id){
     // toggleMobilemenu();
+
+    window.scrollTo(0, 0);
 
     var _obj = findObjectByKey(array, 'id', id);
 
